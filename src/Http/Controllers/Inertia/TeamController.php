@@ -3,10 +3,10 @@
 namespace LaravelTurbo\JetstreamTurbo\Http\Controllers\Inertia;
 
 use Illuminate\Http\Request;
-use LaravelTurbo\JetstreamTurbo\Contracts\TransfersTeams;
-use LaravelTurbo\JetstreamTurbo\Actions\ValidateTeamTransfer;
-use Laravel\Jetstream\Jetstream;
 use Laravel\Jetstream\Http\Controllers\Inertia\TeamController as JetstreamTeamController;
+use Laravel\Jetstream\Jetstream;
+use LaravelTurbo\JetstreamTurbo\Actions\ValidateTeamTransfer;
+use LaravelTurbo\JetstreamTurbo\Contracts\TransfersTeams;
 
 class TeamController extends JetStreamTeamController
 {
@@ -37,11 +37,10 @@ class TeamController extends JetStreamTeamController
                 'canDeleteTeam' => Gate::check('delete', $team),
                 'canRemoveTeamMembers' => Gate::check('removeTeamMember', $team),
                 'canUpdateTeam' => Gate::check('update', $team),
-                'canTransferTeams' => Gate::check('trasnferTeam', $team)
+                'canTransferTeams' => Gate::check('trasnferTeam', $team),
             ],
         ]);
     }
-
 
     /**
      * Transfer the given team to a given user.

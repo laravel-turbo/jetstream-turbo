@@ -6,12 +6,12 @@ use App\Models\Team;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
+use Laravel\Jetstream\Jetstream;
 use LaravelTurbo\JetstreamTurbo\Actions\TransferTeam;
 use LaravelTurbo\JetstreamTurbo\Actions\ValidateTeamTransfer;
 use LaravelTurbo\JetstreamTurbo\Tests\Fixtures\Membership;
 use LaravelTurbo\JetstreamTurbo\Tests\Fixtures\TeamPolicy;
 use LaravelTurbo\JetstreamTurbo\Tests\Fixtures\User;
-use Laravel\Jetstream\Jetstream;
 
 class TransferTeamTest extends TestCase
 {
