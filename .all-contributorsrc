@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "iantasker",
+      "name": "Ian Tasker",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17986190?s=60&v=4",
+      "profile": "http://github.com/ianwtasker",
+      "contributions": [
+        "code",
+        "docs",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "jetstream-turbo",
+  "projectOwner": "laravel-turbo",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
