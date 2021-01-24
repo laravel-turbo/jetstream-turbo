@@ -36,6 +36,5 @@ abstract class TestCase extends BaseTestCase
         ]);
 
         $app['config']->set('jetstream.stack', 'livewire');
-
     }
 }
