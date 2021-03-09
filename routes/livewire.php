@@ -24,9 +24,5 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
                 Route::post('/'.JetstreamTurbo::teamsAlias().'/{team}/transfer/{user}', [TeamController::class, 'transfer'])->name('teams.transfer');
             }
         }
-
-        if (JetstreamTurbo::hasSystemManagerFeature()) {
-            Route::get('/'.JetstreamTurbo::systemPath(), [SystsemController::class, 'show'])->name('system.show');
-        }
     });
 });
