@@ -16,7 +16,7 @@ class JetstreamTurbo extends Jetstream
     public static $teamAlias = 'team';
 
     /**
-     * Determine if the application is using the teams transfer feature confirmation feature.
+     * * Determine if the application is using the teams transfer feature.
      *
      * @return bool
      */

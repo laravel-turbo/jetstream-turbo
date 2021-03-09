@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Jetstream\Http\Controllers\CurrentTeamController;
+use Laravel\Jetstream\Http\Controllers\Livewire\TeamController;
+use Laravel\Jetstream\Http\Controllers\TeamInvitationController;
 use Laravel\Jetstream\Jetstream;
-use LaravelTurbo\JetstreamTurbo\Http\Controllers\Livewire\TeamController;
 use LaravelTurbo\JetstreamTurbo\JetstreamTurbo;
 use LaravelTurbo\LaravelTurbo\Features;
 
