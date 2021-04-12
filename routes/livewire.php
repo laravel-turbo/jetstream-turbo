@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\CurrentTeamController;
 use Laravel\Jetstream\Http\Controllers\Livewire\ApiTokenController;
 use Laravel\Jetstream\Http\Controllers\Livewire\PrivacyPolicyController;
+use Laravel\Jetstream\Http\Controllers\Livewire\TeamController;
 use Laravel\Jetstream\Http\Controllers\Livewire\TermsOfServiceController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
-use Laravel\Jetstream\Http\Controllers\Livewire\TeamController;
 use Laravel\Jetstream\Http\Controllers\TeamInvitationController;
 use Laravel\Jetstream\Jetstream;
 use LaravelTurbo\JetstreamTurbo\JetstreamTurbo;
@@ -23,8 +23,8 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         Route::get('/user/profile', [UserProfileController::class, 'show'])
                     ->name('profile.show');
 
-         // API...
-         if (Jetstream::hasApiFeatures()) {
+        // API...
+        if (Jetstream::hasApiFeatures()) {
             Route::get('/user/api-tokens', [ApiTokenController::class, 'index'])->name('api-tokens.index');
         }
 

@@ -16,8 +16,9 @@ class Team extends JetstreamTeam
      */
     protected $casts = [
         'personal_team' => 'boolean',
-        'properties' => 'array'
+        'properties' => 'array',
     ];
+
     /**
      * Set the the team to be a system team.
      *
@@ -40,5 +41,4 @@ class Team extends JetstreamTeam
 
         return $this;
     }
-
 }

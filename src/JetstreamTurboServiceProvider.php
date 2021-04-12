@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
-use Laravel\Jetstream\Jetstream;
+use Lab404\Impersonate\ImpersonateServiceProvider;
 use Laravel\Jetstream\Features;
+use Laravel\Jetstream\Jetstream;
 use LaravelTurbo\JetstreamTurbo\Http\Livewire\DeleteTeamForm;
 use LaravelTurbo\JetstreamTurbo\Http\Livewire\TeamMemberManager;
 use LaravelTurbo\JetstreamTurbo\Http\Livewire\UpdateTeamNameForm;
 use LaravelTurbo\JetstreamTurbo\Providers\FilamentServiceProvider;
 use LaravelTurbo\JetstreamTurbo\Providers\RouteServiceProvider;
-use Lab404\Impersonate\ImpersonateServiceProvider;
 use Livewire\Component;
 use Livewire\Livewire;
 use ReflectionClass;
@@ -48,7 +48,7 @@ class JetstreamTurboServiceProvider extends ServiceProvider
             }
         });
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'jetstream-turbo');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'jetstream-turbo');
     }
 
     /**
@@ -90,7 +90,6 @@ class JetstreamTurboServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../database/migrations/2021_03_17_231900_add_properties_to_teams_table.php' => database_path('migrations/2021_03_17_231900_add_properties_to_teams_table.php'),
         ], 'jetstream-turbo-migrations');
-
     }
 
     /**
@@ -113,10 +112,9 @@ class JetstreamTurboServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
 
-        if(JetstreamTurbo::hasSystemDashboardFeature()) {
+        if (JetstreamTurbo::hasSystemDashboardFeature()) {
             $this->app->register(FilamentServiceProvider::class);
             $this->app->register(ImpersonateServiceProvider::class);
         }
     }
-
 }

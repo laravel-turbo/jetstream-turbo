@@ -19,7 +19,7 @@ class Team extends JetstreamTurboTeam
      */
     protected $casts = [
         'personal_team' => 'boolean',
-        'properties' => 'array'
+        'properties' => 'array',
     ];
 
     /**

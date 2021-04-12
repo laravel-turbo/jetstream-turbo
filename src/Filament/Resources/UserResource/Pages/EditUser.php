@@ -2,8 +2,8 @@
 
 namespace LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource\Pages;
 
-use LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource;
 use Filament\Resources\Pages\EditRecord;
+use LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource;
 
 class EditUser extends EditRecord
 {

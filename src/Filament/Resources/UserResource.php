@@ -2,10 +2,6 @@
 
 namespace LaravelTurbo\JetstreamTurbo\Filament\Resources;
 
-use LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource\Pages;
-use LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource\RelationManagers;
-use LaravelTurbo\JetstreamTurbo\Filament\Roles;
-use Laravel\Jetstream\Jetstream;
 use Filament\NavigationItem;
 use Filament\Resources\Forms\Components;
 use Filament\Resources\Forms\Form;
@@ -13,6 +9,10 @@ use Filament\Resources\Resource;
 use Filament\Resources\Tables\Columns;
 use Filament\Resources\Tables\Filter;
 use Filament\Resources\Tables\Table;
+use Laravel\Jetstream\Jetstream;
+use LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource\Pages;
+use LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource\RelationManagers;
+use LaravelTurbo\JetstreamTurbo\Filament\Roles;
 use STS\FilamentImpersonate\Impersonate;
 
 class UserResource extends Resource
@@ -29,7 +29,7 @@ class UserResource extends Resource
                         __('Details'),
                         [
                             Components\TextInput::make('name')
-                                ->disabled(fn ($records) => !Filament::can('edit', $record))
+                                ->disabled(fn ($records) => ! Filament::can('edit', $record)),
                         ]
                     ),
                     Components\Tab::make(
@@ -56,16 +56,16 @@ class UserResource extends Resource
                 ->url(fn ($user) => "mailto:{$user->email}"),
         ])
         ->prependRecordActions([
-            Impersonate::make()
+            Impersonate::make(),
         ]);
     }
 
     public static function relations()
-{
-    return [
-        RelationManagers\TeamsRelationManager::class,
-    ];
-}
+    {
+        return [
+            RelationManagers\TeamsRelationManager::class,
+        ];
+    }
 
     public static function routes()
     {
@@ -73,14 +73,14 @@ class UserResource extends Resource
             Pages\ListUsers::routeTo('/', 'index'),
             Pages\CreateUser::routeTo('/create', 'create'),
             Pages\EditUser::routeTo('/{record}/edit', 'edit'),
-            Pages\ViewUser::routeTo('/{record}', 'view')
+            Pages\ViewUser::routeTo('/{record}', 'view'),
         ];
     }
 
     public static function authorization()
     {
         return [
-            Roles\Admin::allow()->only(['viewAny'])
+            Roles\Admin::allow()->only(['viewAny']),
         ];
     }
 }

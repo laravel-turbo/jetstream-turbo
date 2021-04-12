@@ -2,8 +2,8 @@
 
 namespace LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource\Pages;
 
-use LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource;
 use Filament\Resources\Pages\CreateRecord;
+use LaravelTurbo\JetstreamTurbo\Filament\Resources\UserResource;
 
 class CreateUser extends CreateRecord
 {

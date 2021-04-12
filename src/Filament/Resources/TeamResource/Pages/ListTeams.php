@@ -2,8 +2,8 @@
 
 namespace LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource\Pages;
 
-use LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource;
 use Filament\Resources\Pages\ListRecords;
+use LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource;
 
 class ListTeams extends ListRecords
 {
