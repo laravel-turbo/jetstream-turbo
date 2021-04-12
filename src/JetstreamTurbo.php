@@ -66,4 +66,25 @@ class JetstreamTurbo extends Jetstream
     {
         static::$teamAlias = $alias;
     }
+
+    /**
+     * Set the string used to alias teams.
+     *
+     * @param  string  $class
+     * @return void
+     */
+    public static function setSystemTeamAs($id)
+    {
+        Jetstream::newTeamModel()->findOrFail($id)->makeSystemTeam();
+    }
+
+    /**
+     * * Determine if the application is using the system dashboard feature.
+     *
+     * @return bool
+     */
+    public static function hasSystemDashboardFeature()
+    {
+        return Features::hasSystemDashboardFeature();
+    }
 }

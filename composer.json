@@ -13,12 +13,13 @@
         }
     ],
     "require": {
+        "filament/filament": "^1.9",
         "illuminate/support": "^8.0",
-        "lab404/laravel-impersonate": "^1.7",
-        "laravel/jetstream": "^2.0"
+        "laravel/jetstream": "^2.0",
+        "livewire/livewire": "^2.3.5",
+        "stechstudio/filament-impersonate": "^1.0"
     },
     "require-dev": {
-        "livewire/livewire": "^2.3.5",
         "phpunit/phpunit": "^9.3",
         "inertiajs/inertia-laravel": "^0.3",
         "orchestra/testbench": "^6.0"

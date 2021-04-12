@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Actions\JetstreamTurbo\TransferTeam;
+use Illuminate\Support\ServiceProvider;
 use LaravelTurbo\JetstreamTurbo\JetstreamTurbo;
-use LaravelTurbo\JetstreamTurbo\JetstreamTurboServiceProvider as ServiceProvider;
 
 class JetstreamTurboServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class JetstreamTurboServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        parent::register();
+        //JetstreamTurbo::aliasTeamAs('team');
     }
 
     /**
@@ -25,7 +25,7 @@ class JetstreamTurboServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
+        //JetstreamTurbo::setSystemTeamAs(1);
         JetstreamTurbo::transferTeamsUsing(TransferTeam::class);
     }
 }

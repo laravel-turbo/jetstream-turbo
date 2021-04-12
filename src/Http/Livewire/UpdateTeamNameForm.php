@@ -41,7 +41,7 @@ class UpdateTeamNameForm extends JetstreamUpdateTeamNameForm
     {
         $this->team = $team;
 
-        $this->state = ['name' => $team->name];
+        $this->state = $team->withoutRelations()->toArray();
     }
 
     /**

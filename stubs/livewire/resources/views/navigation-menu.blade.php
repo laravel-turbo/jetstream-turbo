@@ -39,7 +39,7 @@
                                 <div class="w-60">
                                     <!-- Team Management -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Manage :Team', ['Team' => ucfirst(LaravelTurbo\JetstreamTurbo\JetstreamTurbo::teamAlias())]) }}
+                                        {{ __('Manage :Team', ['Team' => ucfirst(LaravelTurbo\JetstreamTurbo\JetstreamTurbo::TeamAlias())]) }}
                                     </div>
 
                                     <!-- Team Settings -->
@@ -47,9 +47,15 @@
                                         {{ __(':Team Settings', ['Team' => ucfirst(LaravelTurbo\JetstreamTurbo\JetstreamTurbo::teamAlias())]) }}
                                     </x-jet-dropdown-link>
 
+                                    @if (!is_null(config('spark.billables.team')))
+                                        <x-jet-dropdown-link href="{{ route('spark.portal', ['type' => 'team', 'id' => Auth::user()->currentTeam->id]) }}">
+                                            {{ __('Manage Billing') }}
+                                        </x-jet-dropdown-link>
+                                    @endif
+
                                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                                         <x-jet-dropdown-link href="{{ route('teams.create') }}">
-                                            {{ __('Create New :Team', ['Team' => ucfirst(LaravelTurbo\JetstreamTurbo\JetstreamTurbo::teamAlias())]) }}
+                                            {{ __('Create New :Team', ['Team' => ucfirst(LaravelTurbo\JetstreamTurbo\JetstreamTurbo::TeamAlias())]) }}
                                         </x-jet-dropdown-link>
                                     @endcan
 
@@ -57,7 +63,7 @@
 
                                     <!-- Team Switcher -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Switch :Team', ['Team' => ucfirst(LaravelTurbo\JetstreamTurbo\JetstreamTurbo::teamsAlias())]) }}
+                                        {{ __('Switch :Team', ['Team' => ucfirst(LaravelTurbo\JetstreamTurbo\JetstreamTurbo::teamAlias())]) }}
                                     </div>
 
                                     @foreach (Auth::user()->allTeams() as $team)
@@ -100,11 +106,33 @@
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
+                            @if (!is_null(config('spark.billables.user')))
+                                <x-jet-dropdown-link href="{{ route('spark.portal') }}">
+                                    {{ __('Manage Billing') }}
+                                </x-jet-dropdown-link>
+                            @endif
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
                                 </x-jet-dropdown-link>
                             @endif
+
+                            @if (!is_null(config('spark.billables.user')))
+                                <x-jet-dropdown-link href="{{ route('spark.portal') }}">
+                                    {{ __('Manage Billing') }}
+                                </x-jet-dropdown-link>
+                            @endif
+
+                            <div class="border-t border-gray-100"></div>
+
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('System Settings') }}
+                            </div>
+
+                            <x-jet-dropdown-link href="{{ route('filament.path') }}">
+                                {{ __('Manage Billing') }}
+                            </x-jet-dropdown-link>
 
                             <div class="border-t border-gray-100"></div>
 
