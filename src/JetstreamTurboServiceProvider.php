@@ -113,7 +113,7 @@ class JetstreamTurboServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
 
-        if(JetstreamTurbo::hasSystemDashboarFeature()) {
+        if(JetstreamTurbo::hasSystemDashboardFeature()) {
             $this->app->register(FilamentServiceProvider::class);
             $this->app->register(ImpersonateServiceProvider::class);
         }
