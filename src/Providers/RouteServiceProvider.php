@@ -10,7 +10,7 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function map()
     {
-        if((JetstreamTurbo::hasSystemDashboardFeature()) {
+        if(JetstreamTurbo::hasSystemDashboardFeature()) {
             Route::impersonate();
         }
 
