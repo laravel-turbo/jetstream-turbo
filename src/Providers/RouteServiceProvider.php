@@ -10,9 +10,11 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function map()
     {
-        Route::impersonate();
+        if((JetstreamTurbo::hasSystemDashboardFeature()) {
+            Route::impersonate();
+        }
 
-        //if (JetstreamTurbo::$registersRoutes) {
+        if (JetstreamTurbo::$registersRoutes) {
             Route::group([
                 'namespace' => 'LaravelTurbo\JetstreamTrubo\Http\Controllers',
                 'domain' => config('jetstream.domain', null),
@@ -20,6 +22,6 @@ class RouteServiceProvider extends ServiceProvider
             ], function () {
                 $this->loadRoutesFrom(__DIR__.'/../../routes/'.config('jetstream.stack').'.php');
             });
-        //}
+        }
     }
 }
