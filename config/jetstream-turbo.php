@@ -4,8 +4,6 @@ use LaravelTurbo\JetstreamTurbo\Features;
 
 return [
 
-    'version' => '20210132200005',
-
     /*
     |--------------------------------------------------------------------------
     | Features

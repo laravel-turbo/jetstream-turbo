@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Query\Expression;
 
-class UpdateTeamsTable extends Migration
+class AddPropertiesToTeamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +15,7 @@ class UpdateTeamsTable extends Migration
     public function up()
     {
         Schema::table('teams', function (Blueprint $table) {
-            $table->json('attributes')->default(new Expression('(JSON_ARRAY())'));
+            $table->json('properties')->default('{}');
         });
     }
 
@@ -26,7 +27,7 @@ class UpdateTeamsTable extends Migration
     public function down()
     {
         Schema::table('teams', function (Blueprint $table) {
-            $table->dropColumn('attributes');
+            $table->dropColumn('properties');
         });
     }
 }

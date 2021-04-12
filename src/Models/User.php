@@ -9,14 +9,18 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Filament\Models\Concerns\IsFilamentUser;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use IsFilamentUser;
+    use Impersonate;
 
     /**
      * The attributes that are mass assignable.
@@ -58,4 +62,25 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    public function canImpersonate()
+    {
+        return $this->canAccessFilament();
+    }
+
+    public function canBeImpersonated()
+    {
+        return $this->id != auth()->user->id;
+    }
+
+    public function canAccessFilament()
+    {
+        return $this->allTeams()->where('properties->system_team', true)->isNotEmpty();
+    }
+
+    public function isFilamentAdmin()
+    {
+        return $this->ownedTeams->where('properties->system_team', true)->isNotEmpty();
+    }
 }

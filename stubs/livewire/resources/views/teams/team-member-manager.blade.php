@@ -155,7 +155,7 @@
 
                                     <!-- Remove Team Member -->
                                     @else
-                                        @if (LaravelTurbo\JetstreamTurbo\Feature::hasTeamTransferFeature())
+                                        @if (LaravelTurbo\JetstreamTurbo\Features::hasTeamTransferFeature())
                                             @if (Gate::check('transferTeam', $team))
                                                 <button class="cursor-pointer ml-6 text-sm text-red-500" wire:click="confirmTeamTransfer('{{ $user->id }}')">
                                                     {{ __('Transfer :Team', ['Team' => ucfirst(LaravelTurbo\JetstreamTurbo\JetstreamTurbo::teamAlias())]) }}
@@ -243,7 +243,7 @@
         </x-slot>
     </x-jet-confirmation-modal>
 
-    @if (LaravelTurbo\JetstreamTurbo\Feature::hasTeamTransferFeature())
+    @if (LaravelTurbo\JetstreamTurbo\Features::hasTeamTransferFeature())
         <!-- Remove Team Member Confirmation Modal -->
         <x-jet-confirmation-modal wire:model="confirmingTeamMemberRemoval">
             <x-slot name="title">

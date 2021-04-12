@@ -47,12 +47,22 @@ class Features extends JetstreamFeatures
     }
 
     /**
-     * Determine if the application is using any team features.
+     * Determine if the application is using any team feature.
      *
      * @return bool
      */
     public static function hasTeamTransferFeature()
     {
         return static::optionEnabled(static::teams(), 'transfer');
+    }
+
+    /**
+     * Determine if the application is using system dashboard feature.
+     *
+     * @return bool
+     */
+    public static function hasSystemDashboardFeature()
+    {
+        return static::optionEnabled(static::teams(), 'system');
     }
 }
