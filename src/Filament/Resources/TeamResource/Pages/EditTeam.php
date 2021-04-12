@@ -2,8 +2,8 @@
 
 namespace LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource\Pages;
 
-use LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource;
 use Filament\Resources\Pages\EditRecord;
+use LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource;
 
 class EditTeam extends EditRecord
 {

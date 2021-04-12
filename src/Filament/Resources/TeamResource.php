@@ -2,9 +2,6 @@
 
 namespace LaravelTurbo\JetstreamTurbo\Filament\Resources;
 
-use LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource\Pages;
-use LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource\RelationManagers;
-use LaravelTurbo\JetstreamTurbo\Filament\Roles;
 use Filament\NavigationItem;
 use Filament\Resources\Forms\Components;
 use Filament\Resources\Forms\Form;
@@ -12,6 +9,9 @@ use Filament\Resources\Resource;
 use Filament\Resources\Tables\Columns;
 use Filament\Resources\Tables\Filter;
 use Filament\Resources\Tables\Table;
+use LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource\Pages;
+use LaravelTurbo\JetstreamTurbo\Filament\Resources\TeamResource\RelationManagers;
+use LaravelTurbo\JetstreamTurbo\Filament\Roles;
 
 class TeamResource extends Resource
 {
@@ -56,25 +56,25 @@ class TeamResource extends Resource
     }
 
     public static function relations()
-{
-    return [
-        RelationManagers\UsersRelationManager::class,
-    ];
-}
+    {
+        return [
+            RelationManagers\UsersRelationManager::class,
+        ];
+    }
 
     public static function routes()
     {
         return [
             Pages\ListTeams::routeTo('/', 'index'),
             Pages\CreateTeam::routeTo('/create', 'create'),
-            Pages\EditTeam::routeTo('/{record}/edit', 'edit')
+            Pages\EditTeam::routeTo('/{record}/edit', 'edit'),
         ];
     }
 
     public static function authorization()
     {
         return [
-            Roles\Admin::allow()->only(['viewAny'])
+            Roles\Admin::allow()->only(['viewAny']),
         ];
     }
 }

@@ -11,6 +11,7 @@ class Authenticate extends Middleware
         $guard = config('filament.auth.guard');
         if ($this->auth->guard($guard)->check()) {
             abort_unless($this->auth->guard($guard)->user()->canAccessFilament(), 403);
+
             return $this->auth->shouldUse($guard);
         }
         $this->unauthenticated($request, $guards);

@@ -13,11 +13,11 @@ class RouteServiceProvider extends ServiceProvider
         Route::impersonate();
 
         //if (JetstreamTurbo::$registersRoutes) {
-            Route::group([
-                'namespace' => 'LaravelTurbo\JetstreamTrubo\Http\Controllers',
-                'domain' => config('jetstream.domain', null),
-                'prefix' => config('jetstream.prefix', config('jetstream.path')),
-            ], function () {
+        Route::group([
+            'namespace' => 'LaravelTurbo\JetstreamTrubo\Http\Controllers',
+            'domain' => config('jetstream.domain', null),
+            'prefix' => config('jetstream.prefix', config('jetstream.path')),
+        ], function () {
                 $this->loadRoutesFrom(__DIR__.'/../../routes/'.config('jetstream.stack').'.php');
             });
         //}
