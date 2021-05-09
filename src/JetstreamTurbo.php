@@ -9,6 +9,13 @@ use LaravelTurbo\JetstreamTurbo\Contracts\TransfersTeams;
 class JetstreamTurbo extends Jetstream
 {
     /**
+     * Indicates if JetstreamTurbo routes will be registered.
+     *
+     * @var bool
+     */
+    public static $registersRoutes = true;
+
+    /**
      * The alias used in the URI to describe teams.
      *
      * @var string
@@ -75,7 +82,9 @@ class JetstreamTurbo extends Jetstream
      */
     public static function setSystemTeamAs($id)
     {
-        Jetstream::newTeamModel()->findOrFail($id)->makeSystemTeam();
+        if (Schema::hasTable(Jetstream::newTeamModel()->table())) {
+            Jetstream::newTeamModel()->findOrFail($id)->makeSystemTeam();
+        }
     }
 
     /**
@@ -86,5 +95,17 @@ class JetstreamTurbo extends Jetstream
     public static function hasSystemDashboardFeature()
     {
         return Features::hasSystemDashboardFeature();
+    }
+
+    /**
+     * Configure Jetstream to not register its routes.
+     *
+     * @return static
+     */
+    public static function ignoreRoutes()
+    {
+        static::$registersRoutes = false;
+
+        return new static;
     }
 }
