@@ -83,7 +83,7 @@ class JetstreamTurbo extends Jetstream
      */
     public static function setSystemTeamAs($id)
     {
-        if (Schema::hasTable(Jetstream::newTeamModel()->table())) {
+        if (Schema::hasTable(Jetstream::newTeamModel()->table)) {
             Jetstream::newTeamModel()->findOrFail($id)->makeSystemTeam();
         }
     }
