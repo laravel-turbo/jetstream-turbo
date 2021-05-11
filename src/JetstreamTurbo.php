@@ -2,6 +2,7 @@
 
 namespace LaravelTurbo\JetstreamTurbo;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Jetstream;
 use LaravelTurbo\JetstreamTurbo\Contracts\TransfersTeams;
