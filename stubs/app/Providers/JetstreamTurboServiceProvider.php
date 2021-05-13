@@ -25,7 +25,6 @@ class JetstreamTurboServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //JetstreamTurbo::setSystemTeamAs(1);
         JetstreamTurbo::transferTeamsUsing(TransferTeam::class);
     }
 }
