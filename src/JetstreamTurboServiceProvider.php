@@ -105,7 +105,7 @@ class JetstreamTurboServiceProvider extends ServiceProvider
 
         $this->commands([
             Console\InstallCommand::class,
-            Console\SetSystemTeamCommand::class
+            Console\SetSystemTeamCommand::class,
         ]);
     }
 
