@@ -28,6 +28,6 @@ class SetSystemTeamCommand extends Command
      */
     public function handle()
     {
-        JetstreamTurbo::setSystemTeamAs($this->argument('team'))
+        JetstreamTurbo::setSystemTeamAs($this->argument('team'));
     }
 }
