@@ -1,5 +1,4 @@
-php:
-  version: 8
-  preset: laravel
-  disabled:
-    - no_unused_imports
+version: 8
+preset: laravel
+disabled:
+  - no_unused_imports
