@@ -6,7 +6,6 @@ use Laravel\Jetstream\Jetstream;
 
 trait HasTeamType
 {
-
     public function typeAlias()
     {
         return $this->slug;
