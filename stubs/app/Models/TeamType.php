@@ -8,5 +8,4 @@ use LaravelTurbo\JetstreamTurbo\Models\TeamType as JetstreamTeamType;
 
 class TeamType extends JetstreamTeamType
 {
-
 }
