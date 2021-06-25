@@ -13,7 +13,7 @@ class TeamType extends Model
     use HasTeamType;
 
     protected $fillable = [
-        'name'
+        'name',
     ];
 
     public function teams()

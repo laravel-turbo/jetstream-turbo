@@ -6,8 +6,8 @@ use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use LaravelTurbo\JetstreamTurbo\Models\Team as JetstreamTurboTeam;
-use LaravelTurbo\JetstreamTurbo\Models\Traits\TransfersTeams;
 use LaravelTurbo\JetstreamTurbo\Models\Traits\HasTeamType;
+use LaravelTurbo\JetstreamTurbo\Models\Traits\TransfersTeams;
 
 class Team extends JetstreamTurboTeam
 {
