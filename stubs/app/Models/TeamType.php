@@ -4,20 +4,9 @@ namespace LaravelTurbo\JetstreamTurbo\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Sluggable\HasSlug;
+use LaravelTurbo\JetstreamTurbo\Models\TeamType as JetstreamTeamType;
 
-class TeamType extends Model
+class TeamType extends JetstreamTeamType
 {
-    use HasFactory;
-    use HasSlug;
-    use HasTeamType
 
-    protected $fillable = [
-        'name'
-    ];
-
-    public function teams()
-    {
-        return $this->hasMany(Team::class, 'type_id');
-    }
 }
