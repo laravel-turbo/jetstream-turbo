@@ -10,7 +10,8 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 use Laravel\Jetstream\Http\Controllers\TeamInvitationController;
 use Laravel\Jetstream\Jetstream;
 use LaravelTurbo\JetstreamTurbo\JetstreamTurbo;
-use LaravelTurbo\LaravelTurbo\Features;
+use LaravelTurbo\JetstreamTurbo\Models\TeamType;
+use LaravelTurbo\JetstreamTurbo\Features;
 
 Route::group(['middleware' => config('jetstream.middleware', ['web'])], function () {
     if (Jetstream::hasTermsAndPrivacyPolicyFeature()) {
@@ -30,9 +31,17 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
 
         // Teams...
         if (Jetstream::hasTeamFeatures()) {
-            Route::get('/'.JetstreamTurbo::teamsAlias().'/create', [TeamController::class, 'create'])->name('teams.create');
-            Route::get('/'.JetstreamTurbo::teamsAlias().'/{team}', [TeamController::class, 'show'])->name('teams.show');
-            Route::put('/'.JetstreamTurbo::teamsAlias().'/current', [CurrentTeamController::class, 'update'])->name('current-team.update');
+            if (Jetstream::hasTeamTypeFeatures()) {
+                TeamType::all()->each(function ($type) {
+                    Route::get('/'.$type->teamsAlias().'/create', [TeamController::class, 'create'])->name('teams.create');
+                    Route::get('/'.$type->teamsAlias().'/{team}', [TeamController::class, 'show'])->name('teams.show');
+                    Route::put('/'.$type->teamsAlias().'/current', [CurrentTeamController::class, 'update'])->name('current-team.update');
+                });
+            } else {
+                Route::get('/'.JetstreamTurbo::teamsAlias().'/create', [TeamController::class, 'create'])->name('teams.create');
+                Route::get('/'.JetstreamTurbo::teamsAlias().'/{team}', [TeamController::class, 'show'])->name('teams.show');
+                Route::put('/'.JetstreamTurbo::teamsAlias().'/current', [CurrentTeamController::class, 'update'])->name('current-team.update');
+            }
 
             Route::get('/'.JetstreamTurbo::teamsAlias().'/invitations/{invitation}', [TeamInvitationController::class, 'accept'])
                         ->middleware(['signed'])
