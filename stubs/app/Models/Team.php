@@ -6,11 +6,13 @@ use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use LaravelTurbo\JetstreamTurbo\Models\Team as JetstreamTurboTeam;
+use LaravelTurbo\JetstreamTurbo\Models\Traits\HasTeamType;
 use LaravelTurbo\JetstreamTurbo\Models\Traits\TransfersTeams;
 
 class Team extends JetstreamTurboTeam
 {
     use TransfersTeams;
+    use HasTeamType;
 
     /**
      * The attributes that should be cast to native types.

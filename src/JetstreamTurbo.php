@@ -17,11 +17,41 @@ class JetstreamTurbo extends Jetstream
     public static $registersRoutes = true;
 
     /**
+     * The membership model that should be used by Jetstream.
+     *
+     * @var string
+     */
+    public static $teamTypeModel = 'App\\Models\\TeamType';
+
+    /**
      * The alias used in the URI to describe teams.
      *
      * @var string
      */
     public static $teamAlias = 'team';
+
+    /**
+     * Get the name of the membership model used by the application.
+     *
+     * @return string
+     */
+    public static function teamTypeModel()
+    {
+        return static::$teamTypeModel;
+    }
+
+    /**
+     * Specify the membership model that should be used by Jetstream.
+     *
+     * @param  string  $model
+     * @return static
+     */
+    public static function useTeamTypeModel(string $model)
+    {
+        static::$teamTypeModel = $model;
+
+        return new static;
+    }
 
     /**
      * * Determine if the application is using the teams transfer feature.
@@ -49,9 +79,9 @@ class JetstreamTurbo extends Jetstream
      *
      * @return string
      */
-    public static function TeamAlias()
+    public static function TeamAlias($team = null)
     {
-        return static::$teamAlias;
+        return $team?->type()?->typeAlias() ?? static::$teamAlias;
     }
 
     /**
@@ -59,9 +89,9 @@ class JetstreamTurbo extends Jetstream
      *
      * @return string
      */
-    public static function TeamsAlias()
+    public static function TeamsAlias($tema = null)
     {
-        return Str::plural(static::$teamAlias);
+        return $team?->type()?->typesAlias() ?? Str::plural(static::$teamAlias);
     }
 
     /**
@@ -96,6 +126,16 @@ class JetstreamTurbo extends Jetstream
     public static function hasSystemDashboardFeature()
     {
         return Features::hasSystemDashboardFeature();
+    }
+
+    /**
+     * * Determine if the application is using the team type feature.
+     *
+     * @return bool
+     */
+    public static function hasTeamTypeFeature()
+    {
+        return Features::hasTeamTypeFeature();
     }
 
     /**
