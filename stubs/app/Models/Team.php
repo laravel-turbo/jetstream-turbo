@@ -35,11 +35,11 @@ class Team extends JetstreamTurboTeam
     ];
 
     protected $with = [
-        'team_type'
+        'team_type',
     ];
 
     protected $appends = [
-        'type'
+        'type',
     ];
 
     /**
