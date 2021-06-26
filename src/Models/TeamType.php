@@ -31,9 +31,4 @@ class TeamType extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
-
-    public function teams()
-    {
-        return $this->hasMany(Team::class);
-    }
 }
