@@ -8,11 +8,16 @@ trait HasTeamType
 {
     public function typeAlias()
     {
-        return $this->slug;
+        return $this->type->slug;
     }
 
     public function typesAlias()
     {
-        return Str::plural($this->slug);
+        return Str::plural($this->type->slug);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(JetstreamTurbo::teamTypeModel());
     }
 }
