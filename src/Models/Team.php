@@ -6,7 +6,6 @@ use Laravel\Jetstream\Team as JetstreamTeam;
 
 class Team extends JetstreamTeam
 {
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -18,11 +17,11 @@ class Team extends JetstreamTeam
     ];
 
     protected $with = [
-        'team_type'
+        'team_type',
     ];
 
     protected $appends = [
-        'team_type'
+        'team_type',
     ];
 
     /**
