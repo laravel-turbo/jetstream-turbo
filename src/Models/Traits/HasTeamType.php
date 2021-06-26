@@ -2,7 +2,7 @@
 
 namespace LaravelTurbo\JetstreamTurbo\Models\Traits;
 
-use Laravel\Jetstream\Jetstream;
+use LaravelTurbo\JetstreamTurbo\JetstreamTurbo;
 
 trait HasTeamType
 {
