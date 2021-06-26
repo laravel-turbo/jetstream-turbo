@@ -21,4 +21,14 @@ class TeamType extends Model
     {
         return $this->hasMany(Team::class);
     }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
 }

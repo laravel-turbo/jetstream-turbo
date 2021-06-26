@@ -33,9 +33,9 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         if (Jetstream::hasTeamFeatures()) {
             if (Jetstream::hasTeamTypeFeatures()) {
                 TeamType::all()->each(function ($type) {
-                    Route::get('/'.$type->teamsAlias().'/create', [TeamController::class, 'create'])->name('teams.create');
-                    Route::get('/'.$type->teamsAlias().'/{team}', [TeamController::class, 'show'])->name('teams.show');
-                    Route::put('/'.$type->teamsAlias().'/current', [CurrentTeamController::class, 'update'])->name('current-team.update');
+                    Route::get('/'.Str::plural($type->slug).'/create', [TeamController::class, 'create'])->name('teams.create');
+                    Route::get('/'.Str::plural($type->slug).'/{team}', [TeamController::class, 'show'])->name('teams.show');
+                    Route::put('/'.Str::plural($type->slug).'/current', [CurrentTeamController::class, 'update'])->name('current-team.update');
                 });
             } else {
                 Route::get('/'.JetstreamTurbo::teamsAlias().'/create', [TeamController::class, 'create'])->name('teams.create');

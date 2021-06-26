@@ -15,4 +15,9 @@ trait HasTeamType
     {
         return Str::plural($this->slug);
     }
+
+    public function type()
+    {
+        return $this->belongsTo(TeamType::class);
+    }
 }
