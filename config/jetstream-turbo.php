@@ -21,7 +21,8 @@ return [
                 //'invitations' => true,
                 //'personal' => fasle,
                 //'transfer' => true
-                //'system => true,
+                //'system' => true,
+                //'type' => true,
             ]),
     ],
 
