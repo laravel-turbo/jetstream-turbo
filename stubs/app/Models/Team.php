@@ -34,6 +34,14 @@ class Team extends JetstreamTurboTeam
         'personal_team',
     ];
 
+    protected $with = [
+        'team_type'
+    ];
+
+    protected $appends = [
+        'type'
+    ];
+
     /**
      * The event map for the model.
      *
