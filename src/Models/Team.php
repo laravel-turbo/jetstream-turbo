@@ -16,14 +16,6 @@ class Team extends JetstreamTeam
         'properties' => 'array',
     ];
 
-    protected $with = [
-        'team_type',
-    ];
-
-    protected $appends = [
-        'team_type',
-    ];
-
     /**
      * Set the the team to be a system team.
      *

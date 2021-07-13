@@ -13,6 +13,7 @@
         }
     ],
     "require": {
+        "calebporzio/parental": "^0.11.0",
         "filament/filament": "^1.9",
         "illuminate/support": "^8.0",
         "laravel/jetstream": "^2.0",

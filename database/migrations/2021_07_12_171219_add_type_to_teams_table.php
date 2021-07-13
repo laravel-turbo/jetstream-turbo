@@ -14,7 +14,7 @@ class AddTypeToTeamsTable extends Migration
     public function up()
     {
         Schema::table('teams', function (Blueprint $table) {
-            $table->foreignId('team_type_id')->nullable();
+            $table->string('type')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddTypeToTeamsTable extends Migration
     public function down()
     {
         Schema::table('teams', function (Blueprint $table) {
-            $table->dropColumn('team_type_id');
+            $table->dropColumn('type');
         });
     }
 }

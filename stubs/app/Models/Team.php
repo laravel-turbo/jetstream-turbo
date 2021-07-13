@@ -6,13 +6,13 @@ use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use LaravelTurbo\JetstreamTurbo\Models\Team as JetstreamTurboTeam;
-use LaravelTurbo\JetstreamTurbo\Models\Traits\HasTeamType;
 use LaravelTurbo\JetstreamTurbo\Models\Traits\TransfersTeams;
+use Parental\HasChildren;
 
 class Team extends JetstreamTurboTeam
 {
     use TransfersTeams;
-    use HasTeamType;
+    use HasChildren;
 
     /**
      * The attributes that should be cast to native types.
@@ -32,14 +32,7 @@ class Team extends JetstreamTurboTeam
     protected $fillable = [
         'name',
         'personal_team',
-    ];
-
-    protected $with = [
-        'team_type',
-    ];
-
-    protected $appends = [
-        'type',
+        'type'
     ];
 
     /**
@@ -51,5 +44,9 @@ class Team extends JetstreamTurboTeam
         'created' => TeamCreated::class,
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
+    ];
+
+    protected $childTypes = [
+
     ];
 }

@@ -17,41 +17,11 @@ class JetstreamTurbo extends Jetstream
     public static $registersRoutes = true;
 
     /**
-     * The membership model that should be used by Jetstream.
-     *
-     * @var string
-     */
-    public static $teamTypeModel = 'App\\Models\\TeamType';
-
-    /**
      * The alias used in the URI to describe teams.
      *
      * @var string
      */
     public static $teamAlias = 'team';
-
-    /**
-     * Get the name of the membership model used by the application.
-     *
-     * @return string
-     */
-    public static function teamTypeModel()
-    {
-        return static::$teamTypeModel;
-    }
-
-    /**
-     * Specify the membership model that should be used by Jetstream.
-     *
-     * @param  string  $model
-     * @return static
-     */
-    public static function useTeamTypeModel(string $model)
-    {
-        static::$teamTypeModel = $model;
-
-        return new static;
-    }
 
     /**
      * * Determine if the application is using the teams transfer feature.
@@ -81,7 +51,7 @@ class JetstreamTurbo extends Jetstream
      */
     public static function TeamAlias($team = null)
     {
-        return $team?->typeAlias() ?? static::$teamAlias;
+        return ($team->type != null) ? $team->type ? static::$teamAlias;
     }
 
     /**
@@ -91,7 +61,7 @@ class JetstreamTurbo extends Jetstream
      */
     public static function TeamsAlias($team = null)
     {
-        return $team?->typesAlias() ?? Str::plural(static::$teamAlias);
+        return Str::plural(Jetstream::TeamAlias($team));
     }
 
     /**
