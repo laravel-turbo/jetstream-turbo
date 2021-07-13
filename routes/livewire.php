@@ -32,7 +32,7 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         // Teams...
         if (Jetstream::hasTeamFeatures()) {
             if (JetstreamTurbo::hasTeamTypeFeature()) {
-                Team::childTypes ->each(function ($slug, $type) {
+                Team::childTypes->each(function ($slug, $type) {
                     Route::get('/'.Str::plural($slug).'/create', [TeamController::class, 'create'])->name('teams.create');
                     Route::get('/'.Str::plural($slug).'/{team}', [TeamController::class, 'show'])->name('teams.show');
                     Route::put('/'.Str::plural($slug).'/current', [CurrentTeamController::class, 'update'])->name('current-team.update');

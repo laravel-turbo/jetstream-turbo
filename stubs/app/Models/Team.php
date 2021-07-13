@@ -32,7 +32,7 @@ class Team extends JetstreamTurboTeam
     protected $fillable = [
         'name',
         'personal_team',
-        'type'
+        'type',
     ];
 
     /**
