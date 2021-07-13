@@ -51,7 +51,7 @@ class JetstreamTurbo extends Jetstream
      */
     public static function TeamAlias($team = null)
     {
-        return ($team->type != null) ? $team->type ? static::$teamAlias;
+        return ($team->type != null) ? $team->type : static::$teamAlias;
     }
 
     /**
