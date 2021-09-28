@@ -9,6 +9,6 @@ use STS\FilamentImpersonate\CanImpersonateUsers;
 class ListUsers extends ListRecords
 {
     use CanImpersonateUsers;
-  
+
     public static $resource = UserResource::class;
 }
