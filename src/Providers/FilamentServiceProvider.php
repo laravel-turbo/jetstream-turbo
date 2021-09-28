@@ -19,4 +19,9 @@ class FilamentServiceProvider extends PluginServiceProvider
         TeamResource::class,
         UserResource::class,
     ];
+
+    protected function resources()
+    {
+        return config('jetstream-turbo.filament.default_resources', $this->resources);
+    }
 }
