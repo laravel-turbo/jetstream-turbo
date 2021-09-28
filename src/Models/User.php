@@ -76,14 +76,14 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessFilament()
     {
         return $this->allTeams()->filter(function ($value, $key) {
-            return ($value->properties != null && isset($value->properties['system_team']) && $value->properties['system_team'] == true);
+            return $value->properties != null && isset($value->properties['system_team']) && $value->properties['system_team'] == true;
         })->isNotEmpty();
     }
 
     public function isFilamentAdmin()
     {
         return $this->ownedTeams->filter(function ($value, $key) {
-            return ($value->properties != null && isset($value->properties['system_team']) && $value->properties['system_team'] == true);
+            return $value->properties != null && isset($value->properties['system_team']) && $value->properties['system_team'] == true;
         })->isNotEmpty();
     }
 }
