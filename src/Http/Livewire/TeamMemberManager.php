@@ -57,7 +57,7 @@ class TeamMemberManager extends JetstreamTeamMemberManager
     /**
      * Transfer ownership of the team to a different team member.
      *
-     * @param LaravelTurbo\JetstreamTurbo\Contracts\TransfersTeams  $transferrer
+     * @param  LaravelTurbo\JetstreamTurbo\Contracts\TransfersTeams  $transferrer
      * @return void
      */
     public function transferTeam(TransfersTeams $transferrer)
