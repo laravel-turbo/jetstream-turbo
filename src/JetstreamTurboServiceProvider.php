@@ -2,9 +2,6 @@
 
 namespace LaravelTurbo\JetstreamTurbo;
 
-use Filament\Filament;
-use Filament\Pages\Page;
-use Filament\Resources\Resource;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +14,6 @@ use Laravel\Jetstream\Jetstream;
 use LaravelTurbo\JetstreamTurbo\Http\Livewire\DeleteTeamForm;
 use LaravelTurbo\JetstreamTurbo\Http\Livewire\TeamMemberManager;
 use LaravelTurbo\JetstreamTurbo\Http\Livewire\UpdateTeamNameForm;
-use LaravelTurbo\JetstreamTurbo\Providers\FilamentServiceProvider;
 use LaravelTurbo\JetstreamTurbo\Providers\RouteServiceProvider;
 use Livewire\Component;
 use Livewire\Livewire;
@@ -33,7 +29,6 @@ class JetstreamTurboServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Filament::ignoreMigrations();
         Jetstream::ignoreRoutes();
 
         $this->registerProviders();
@@ -114,7 +109,6 @@ class JetstreamTurboServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
 
         if (JetstreamTurbo::hasSystemDashboardFeature()) {
-            $this->app->register(FilamentServiceProvider::class);
             $this->app->register(ImpersonateServiceProvider::class);
         }
     }
