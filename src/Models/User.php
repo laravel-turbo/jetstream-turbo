@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Filament\Models\Concerns\IsFilamentUser;
-use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,14 +10,13 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use IsFilamentUser;
     use Impersonate;
 
     /**
@@ -62,28 +59,4 @@ class User extends Authenticatable implements FilamentUser
     protected $appends = [
         'profile_photo_url',
     ];
-
-    public function canImpersonate()
-    {
-        return $this->canAccessFilament();
-    }
-
-    public function canBeImpersonated()
-    {
-        return $this->id != auth()->user->id;
-    }
-
-    public function canAccessFilament()
-    {
-        return $this->allTeams()->filter(function ($value, $key) {
-            return $value->properties != null && isset($value->properties['system_team']) && $value->properties['system_team'] == true;
-        })->isNotEmpty();
-    }
-
-    public function isFilamentAdmin()
-    {
-        return $this->ownedTeams->filter(function ($value, $key) {
-            return $value->properties != null && isset($value->properties['system_team']) && $value->properties['system_team'] == true;
-        })->isNotEmpty();
-    }
 }
