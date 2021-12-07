@@ -2,9 +2,6 @@
 
 namespace LaravelTurbo\JetstreamTurbo;
 
-use Filament\Filament;
-use Filament\Pages\Page;
-use Filament\Resources\Resource;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
@@ -114,7 +111,6 @@ class JetstreamTurboServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
 
         if (JetstreamTurbo::hasSystemDashboardFeature()) {
-            $this->app->register(FilamentServiceProvider::class);
             $this->app->register(ImpersonateServiceProvider::class);
         }
     }
