@@ -14,7 +14,6 @@ use Laravel\Jetstream\Jetstream;
 use LaravelTurbo\JetstreamTurbo\Http\Livewire\DeleteTeamForm;
 use LaravelTurbo\JetstreamTurbo\Http\Livewire\TeamMemberManager;
 use LaravelTurbo\JetstreamTurbo\Http\Livewire\UpdateTeamNameForm;
-use LaravelTurbo\JetstreamTurbo\Providers\FilamentServiceProvider;
 use LaravelTurbo\JetstreamTurbo\Providers\RouteServiceProvider;
 use Livewire\Component;
 use Livewire\Livewire;
@@ -30,7 +29,6 @@ class JetstreamTurboServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Filament::ignoreMigrations();
         Jetstream::ignoreRoutes();
 
         $this->registerProviders();
